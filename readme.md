@@ -33,7 +33,7 @@ To get this project setup, you should:
 - [ ] Variables should be named logicially
 - [ ] No unneccessary console logs
 - [ ] No commented out blocks of code (Code comments are fine)
-- [ ] Setup a github repository with your submission as the `main` branch, you will submit a link to this for grading (NOT A ZIP FILE)
+- [ X ] Setup a github repository with your submission as the `main` branch, you will submit a link to this for grading (NOT A ZIP FILE)
 
 ### Assignment Specific Requirements
 
