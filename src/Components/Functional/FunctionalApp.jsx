@@ -4,39 +4,65 @@ import { FunctionalFinalScore } from "./FunctionalFinalScore";
 import { Images } from "../../assets/Images";
 import { useState } from "react";
 
+const initialFishes = [
+  {
+    name: "trout",
+    url: Images.trout,
+  },
+  {
+    name: "salmon",
+    url: Images.salmon,
+  },
+  {
+    name: "tuna",
+    url: Images.tuna,
+  },
+  {
+    name: "shark",
+    url: Images.shark,
+  },
+];
+
 export function FunctionalApp() {
-  const initialFishes = [
-    {
-      name: "trout",
-      url: Images.trout,
-    },
-    {
-      name: "salmon",
-      url: Images.salmon,
-    },
-    {
-      name: "tuna",
-      url: Images.tuna,
-    },
-    {
-      name: "shark",
-      url: Images.shark,
-    },
-  ];
+  const [fishState, setFishState] = useState({
+    correctTally: 0,
+    incorrectTally: 0,
+  });
 
-  const [fishName, setFishName] = useState("");
+  const currentCorrectFish =
+    initialFishes[fishState.correctTally + fishState.incorrectTally]?.name;
 
-  const handleUserInput = (fishName) => setFishName(fishName);
+  const fishIndex = fishState.correctTally + fishState.incorrectTally;
+
+  const userInput = (guess) => {
+    if (currentCorrectFish === guess.toLowerCase()) {
+      setFishState(fishState.correctTally + 1);
+    } else {
+      setFishState(fishState.incorrectTally + 1);
+    }
+  };
 
   return (
     <>
-      <FunctionalScoreBoard />
-      <FunctionalGameBoard
-        fishData={initialFishes}
-        fishName={fishName}
-        handleUserInput={handleUserInput}
-      />
-      {false && <FunctionalFinalScore />}
+      {fishIndex !== 4 ? (
+        <>
+          <FunctionalScoreBoard
+            correctTally={fishState.correctTally}
+            incorrectTally={fishState.incorrectTally}
+            fishes={initialFishes}
+          />
+          <FunctionalGameBoard
+            fishes={initialFishes}
+            onSubmit={userInput}
+            currentImageIndex={fishIndex}
+          />
+        </>
+      ) : (
+        <FunctionalFinalScore
+          correctTally={fishState.correctTally}
+          totalTally={initialFishes}
+        />
+      )}
     </>
   );
 }
