@@ -24,18 +24,21 @@ const initialFishes = [
 ];
 
 export function FunctionalApp() {
+  //state for correct and incorrect guess count:
   const [fishState, setFishState] = useState({
     correctTally: 0,
     incorrectTally: 0,
   });
 
-  const currentCorrectFish =
-    initialFishes[fishState.correctTally + fishState.incorrectTally]?.name;
-
+  //fishIndex: evident - INDEX
   const fishIndex = fishState.correctTally + fishState.incorrectTally;
 
+  //this lets me know the NAME of the fish[index] we're on:
+  const currentFishIndexName = initialFishes[fishIndex].name;
+
+  //this is where the magic happens: take the user's guess and if it matches the fish's name add 1 to correctTally state, if it does not match add 1 to incorrectTally state: FORMULA TO GATHER ANSWERS:
   const userInput = (guess) => {
-    if (currentCorrectFish === guess.toLowerCase()) {
+    if (currentFishIndexName === guess.toLowerCase()) {
       setFishState(fishState.correctTally + 1);
     } else {
       setFishState(fishState.incorrectTally + 1);
@@ -54,13 +57,13 @@ export function FunctionalApp() {
           <FunctionalGameBoard
             fishes={initialFishes}
             onSubmit={userInput}
-            currentImageIndex={fishIndex}
+            fishIndex={fishIndex}
           />
         </>
       ) : (
         <FunctionalFinalScore
           correctTally={fishState.correctTally}
-          totalTally={initialFishes}
+          totalTally={initialFishes.length}
         />
       )}
     </>
