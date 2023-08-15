@@ -28,9 +28,9 @@ To get this project setup, you should:
 
 - To check if linting passes, run `npm run lint`
 
-- [ ] Format code with prettier
-- [ ] State should not be duplicated
-- [ ] Variables should be named logicially
+- [X ] Format code with prettier
+- [X ] State should not be duplicated
+- [ X] Variables should be named logicially
 - [ ] No unneccessary console logs
 - [ ] No commented out blocks of code (Code comments are fine)
 - [ X ] Setup a github repository with your submission as the `main` branch, you will submit a link to this for grading (NOT A ZIP FILE)
