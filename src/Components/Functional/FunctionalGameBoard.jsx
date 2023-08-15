@@ -1,9 +1,14 @@
 import "./styles/game-board.css";
 import { useState } from "react";
 
-export function FunctionalGameBoard({ fishes, onSubmit, fishIndex }) {
+export function FunctionalGameBoard({
+  fishes,
+  onSubmit,
+  fishIndex,
+  userInput,
+}) {
   //NEED STATE TO KEEP TRACK OF USER INPUT/GUESSES:
-  const [userInput, setUserInput] = useState("");
+  const [usersInput, setUserInput] = useState("");
 
   //the code calculates the index of the next fish object to access in the fishes array. If fishIndex is not equal to 4, the code uses fishIndex as the index. If fishIndex is equal to 4, the code uses index 0. The chosen fish object is then assigned to the nextFishToName variable.
   const nextFishToName = fishes[fishIndex !== 4 ? fishIndex : 0];
@@ -35,7 +40,7 @@ export function FunctionalGameBoard({ fishes, onSubmit, fishIndex }) {
         <input
           type="text"
           name="fish-guess"
-          value={userInput}
+          value={usersInput}
           onChange={collectUserInput}
         />
         <input type="submit" />

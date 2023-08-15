@@ -5,18 +5,16 @@ import "./styles/score-board.css";
 // const correctCount = 0;
 // const answersLeft = ["trout", "salmon", "tuna", "shark"];
 
-export function FunctionalScoreBoard({ correctTally, incorrectTally, fishes }) {
-  const total = correctTally + incorrectTally;
-  console.log(total);
-  const answersLeft = fishes
-    .slice(total, fishes.length)
-    .map((fish) => fish.name);
-  console.log(answersLeft);
+export function FunctionalScoreBoard({
+  correctTally,
+  incorrectTally,
+  answers,
+}) {
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectTally}</div>
       <div id="choices-left">
-        {answersLeft.map((answer) => (
+        {answers.map((answer) => (
           <div key={answer} className="choice">
             {answer}
           </div>

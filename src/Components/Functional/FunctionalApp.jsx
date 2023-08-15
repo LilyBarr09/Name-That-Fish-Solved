@@ -33,10 +33,10 @@ export function FunctionalApp() {
   //fishIndex: evident - INDEX
   const fishIndex = fishState.correctTally + fishState.incorrectTally;
 
-  //this lets me know the NAME of the fish[index] we're on:
+  //this lets me know the NAME of the fish[index] we're on to compare with user's guess:
   const currentFishIndexName = initialFishes[fishIndex].name;
 
-  //this is where the magic happens: take the user's guess and if it matches the fish's name add 1 to correctTally state, if it does not match add 1 to incorrectTally state: FORMULA TO GATHER ANSWERS:
+  //ACTION: take the user's guess and if it matches the fish's name add 1 to correctTally state, if it does not match add 1 to incorrectTally state: FORMULA TO GATHER ANSWERS:
   const userInput = (guess) => {
     if (currentFishIndexName === guess.toLowerCase()) {
       setFishState(fishState.correctTally + 1);
@@ -44,6 +44,10 @@ export function FunctionalApp() {
       setFishState(fishState.incorrectTally + 1);
     }
   };
+
+  const answersLeft = initialFishes
+    .slice(fishIndex, initialFishes.length)
+    .map((fish) => fish.name);
 
   return (
     <>
@@ -53,6 +57,7 @@ export function FunctionalApp() {
             correctTally={fishState.correctTally}
             incorrectTally={fishState.incorrectTally}
             fishes={initialFishes}
+            answers={answersLeft}
           />
           <FunctionalGameBoard
             fishes={initialFishes}
