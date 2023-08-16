@@ -25,13 +25,16 @@ const initialFishes = [
 
 export function FunctionalApp() {
   //state for correct and incorrect guess count:
-  const [fishState, setFishState] = useState({
-    correctTally: 0,
-    incorrectTally: 0,
-  });
+  // const [fishState, setFishState] = useState({
+  //   correctTally: 0,
+  //   incorrectTally: 0,
+  // });
+  const [correctTally, setCorrectTally] = useState(0);
+  const [incorrectTally, setIncorrectTally] = useState(0);
+  const [fishIndex, setFishIndex] = useState(correctTally + incorrectTally);
 
   //fishIndex: evident - INDEX
-  const fishIndex = fishState.correctTally + fishState.incorrectTally;
+  // const fishIndex = fishState.correctTally + fishState.incorrectTally;
 
   //this lets me know the NAME of the fish[index] we're on to compare with user's guess:
   const currentFishIndexName = initialFishes[fishIndex].name;
@@ -40,12 +43,13 @@ export function FunctionalApp() {
   const usersGuess = (fish) => {
     if (currentFishIndexName === fish.toLowerCase()) {
       console.log(fish);
-      setFishState(fishState.correctTally + 1);
-      console.log(fishState.correctTally);
+      setCorrectTally(correctTally + 1);
+      console.log(correctTally);
     } else {
-      setFishState(fishState.incorrectTally + 1);
-      console.log(fishState.incorrectTally);
+      setIncorrectTally(incorrectTally + 1);
+      console.log(incorrectTally);
     }
+    setFishIndex(correctTally + incorrectTally);
   };
 
   //This is slowly removing user's guesses from the initialFishes array: LOGS ARRAY OF FISH NAMES, BUT DOES NOT SLICE OR MAP - NEED TO DEBUGGGGGG
@@ -59,8 +63,8 @@ export function FunctionalApp() {
       {fishIndex !== 4 ? (
         <>
           <FunctionalScoreBoard
-            correctTally={fishState.correctTally}
-            incorrectTally={fishState.incorrectTally}
+            correctTally={correctTally}
+            incorrectTally={incorrectTally}
             fishes={initialFishes}
             answers={answersLeft}
           />
@@ -72,7 +76,7 @@ export function FunctionalApp() {
         </>
       ) : (
         <FunctionalFinalScore
-          correctTally={fishState.correctTally}
+          correctTally={correctTally}
           totalTally={initialFishes.length}
         />
       )}
