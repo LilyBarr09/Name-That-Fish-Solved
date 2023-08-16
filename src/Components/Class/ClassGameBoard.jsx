@@ -5,6 +5,7 @@ export class ClassGameBoard extends Component {
   state = {
     usersInput: "",
   };
+
   submitForm = (e) => {
     e.preventDefault();
     this.props.fishGuess(this.state.usersInput);
