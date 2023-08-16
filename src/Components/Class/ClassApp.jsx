@@ -29,7 +29,7 @@ export class ClassApp extends Component {
     incorrectTally: 0,
   };
 
-  total = () this.state.correctTally + this.state.incorrectTally;
+  total = this.state.correctTally + this.state.incorrectTally;
 
   fishGuess = (fish) => {
     const arrValuesToAdd =
