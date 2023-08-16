@@ -34,6 +34,7 @@ export class ClassApp extends Component {
   fishGuess = (fish) => {
     const arrValuesToAdd =
       fish === initialFishes[this.fishIndex].name ? [1, 0] : [0, 1];
+    console.log(arrValuesToAdd);
     this.setState({
       correctTally: this.state.correctTally + arrValuesToAdd[0],
       incorrectTally: this.state.incorrectTally + arrValuesToAdd[1],
