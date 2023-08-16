@@ -29,43 +29,44 @@ export class ClassApp extends Component {
     incorrectTally: 0,
   };
 
-  total = this.state.correctTally + this.state.incorrectTally;
-
   fishGuess = (fish) => {
     const arrValuesToAdd =
-      fish === initialFishes[this.total].name ? [1, 0] : [0, 1];
-    console.log(arrValuesToAdd);
+      fish ===
+      initialFishes[this.state.correctTally + this.state.incorrectTally].name
+        ? [1, 0]
+        : [0, 1];
     this.setState({
       correctTally: this.state.correctTally + arrValuesToAdd[0],
       incorrectTally: this.state.incorrectTally + arrValuesToAdd[1],
     });
   };
 
-  answersLeft = initialFishes
-    .slice(this.total, initialFishes.length)
-    .map((fish) => fish.name);
-
   render() {
-    console.log(this.total);
     const { correctTally, incorrectTally } = this.state;
+
+    const total = this.state.correctTally + this.state.incorrectTally;
+
+    const answersLeft = initialFishes
+      .slice(total, initialFishes.length)
+      .map((fish) => fish.name);
 
     return (
       <>
-        {this.total < 4 && (
+        {total < 4 && (
           <>
             <ClassScoreBoard
               correctTally={correctTally}
               incorrectTally={incorrectTally}
-              answers={this.answersLeft}
+              answers={answersLeft}
             />
             <ClassGameBoard
               fishes={initialFishes}
               fishGuess={this.fishGuess}
-              total={this.total}
+              total={total}
             />
           </>
         )}
-        {this.total === 4 && (
+        {total === 4 && (
           <ClassFinalScore
             correctTally={correctTally}
             totalTally={initialFishes.length}
