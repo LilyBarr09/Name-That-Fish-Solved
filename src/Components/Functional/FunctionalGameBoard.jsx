@@ -22,8 +22,8 @@ export function FunctionalGameBoard({ fishes, fishGuess, fishIndex }) {
       </div>
       <form
         id="fish-guess-form"
-        onSubmit={() => {
-          submitForm();
+        onSubmit={(e) => {
+          submitForm(e);
         }}
       >
         <label htmlFor="fish-guess">What kind of fish is this?</label>
