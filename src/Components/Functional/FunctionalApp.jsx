@@ -32,7 +32,6 @@ export function FunctionalApp() {
   const fishGuess = (fish) => {
     const arrValuesToAdd =
       fish === initialFishes[fishIndex].name ? [1, 0] : [0, 1];
-    console.log(arrValuesToAdd);
     setCorrectTally(correctTally + arrValuesToAdd[0]);
     setIncorrectTally(incorrectTally + arrValuesToAdd[1]);
   };
@@ -40,7 +39,6 @@ export function FunctionalApp() {
   const answersLeft = initialFishes
     .slice(fishIndex, initialFishes.length)
     .map((fish) => fish.name);
-  console.log(answersLeft);
 
   return (
     <>

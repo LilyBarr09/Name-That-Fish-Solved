@@ -1,9 +1,4 @@
 import "./styles/score-board.css";
-//  Where the score is presented
-
-// const incorrectCount = 0;
-// const correctCount = 0;
-// const answersLeft = ["trout", "salmon", "tuna", "shark"];
 
 export function FunctionalScoreBoard({
   correctTally,

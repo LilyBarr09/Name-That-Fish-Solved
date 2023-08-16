@@ -7,7 +7,7 @@ export function FunctionalGameBoard({ fishes, fishGuess, fishIndex }) {
   const nextFishToName = fishes[fishIndex !== 4 ? fishIndex : 0];
 
   const submitForm = (e) => {
-    e.preventDefault(); //THIS ALWAYS GOES WITH THE ONSUBMIT
+    e.preventDefault();
     fishGuess(usersInput);
     setUsersInput("");
   };

@@ -23,27 +23,27 @@ To get this project setup, you should:
 
 ### Standard Requirements
 
-- [ ] Setup eslint
-- [ ] Pass all linting checks
+- [X ] Setup eslint
+- [ X] Pass all linting checks
 
 - To check if linting passes, run `npm run lint`
 
 - [X ] Format code with prettier
 - [X ] State should not be duplicated
 - [ X] Variables should be named logicially
-- [ ] No unneccessary console logs
-- [ ] No commented out blocks of code (Code comments are fine)
+- [X ] No unneccessary console logs
+- [ X] No commented out blocks of code (Code comments are fine)
 - [ X ] Setup a github repository with your submission as the `main` branch, you will submit a link to this for grading (NOT A ZIP FILE)
 
 ### Assignment Specific Requirements
 
-- [ ] Get your code to function EXACTLY like [This Site](https://name-that-fish-deployed.vercel.app/)
-- [ ] Keep state as CLEAN AS POSSIBLE
-- [ ] Place `initialFishes` in the correct component
-- [ ] Derive all pieces of state that can be derived
-- [ ] Don't mutate state directly, only use a state setter
+- [X ] Get your code to function EXACTLY like [This Site](https://name-that-fish-deployed.vercel.app/)
+- [X ] Keep state as CLEAN AS POSSIBLE
+- [ X] Place `initialFishes` in the correct component
+- [X ] Derive all pieces of state that can be derived
+- [X ] Don't mutate state directly, only use a state setter
   - example: don't use .splice on an array that you are rendering
-- [ ] Keep all constants (variables that do not change over time) outside of components
-- [ ] Form must reset after submitting
-- [ ] Page must NOT reload after submitting
-- [ ] ClassApp Code and FunctionalApp Code should be treated as seperate apps as far as state goes
+- [X ] Keep all constants (variables that do not change over time) outside of components
+- [X ] Form must reset after submitting
+- [X ] Page must NOT reload after submitting
+- [ X] ClassApp Code and FunctionalApp Code should be treated as separate apps as far as state goes
