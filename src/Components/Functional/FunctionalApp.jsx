@@ -26,20 +26,14 @@ const initialFishes = [
 export function FunctionalApp() {
   const [correctTally, setCorrectTally] = useState(0);
   const [incorrectTally, setIncorrectTally] = useState(0);
-  const [fishIndex, setFishIndex] = useState(correctTally + incorrectTally);
 
-  const currentFishIndexName = initialFishes[fishIndex].name;
+  const fishIndex = correctTally + incorrectTally;
 
   const usersGuess = (fish) => {
-    if (currentFishIndexName === fish.toLowerCase()) {
-      console.log(fish);
-      setCorrectTally(correctTally + 1);
-      console.log(correctTally);
-    } else {
-      setIncorrectTally(incorrectTally + 1);
-      console.log(incorrectTally);
-    }
-    setFishIndex(correctTally + incorrectTally);
+    const arrValuesToAdd =
+      fish === initialFishes[fishIndex].name ? [1, 0] : [0, 1];
+    setCorrectTally(correctTally + arrValuesToAdd[0]);
+    setIncorrectTally(incorrectTally + arrValuesToAdd[1]);
   };
 
   const answersLeft = initialFishes
