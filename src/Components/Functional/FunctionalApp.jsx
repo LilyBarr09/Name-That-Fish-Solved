@@ -24,22 +24,12 @@ const initialFishes = [
 ];
 
 export function FunctionalApp() {
-  //state for correct and incorrect guess count:
-  // const [fishState, setFishState] = useState({
-  //   correctTally: 0,
-  //   incorrectTally: 0,
-  // });
   const [correctTally, setCorrectTally] = useState(0);
   const [incorrectTally, setIncorrectTally] = useState(0);
   const [fishIndex, setFishIndex] = useState(correctTally + incorrectTally);
 
-  //fishIndex: evident - INDEX
-  // const fishIndex = fishState.correctTally + fishState.incorrectTally;
-
-  //this lets me know the NAME of the fish[index] we're on to compare with user's guess:
   const currentFishIndexName = initialFishes[fishIndex].name;
 
-  //ACTION: take the user's guess and if it matches the fish's name add 1 to correctTally state, if it does not match add 1 to incorrectTally state: FORMULA TO GATHER ANSWERS: NOT WORKING - NEED TO DEBUGGGGGG
   const usersGuess = (fish) => {
     if (currentFishIndexName === fish.toLowerCase()) {
       console.log(fish);
@@ -52,7 +42,6 @@ export function FunctionalApp() {
     setFishIndex(correctTally + incorrectTally);
   };
 
-  //This is slowly removing user's guesses from the initialFishes array: LOGS ARRAY OF FISH NAMES, BUT DOES NOT SLICE OR MAP - NEED TO DEBUGGGGGG
   const answersLeft = initialFishes
     .slice(fishIndex, initialFishes.length)
     .map((fish) => fish.name);
@@ -60,7 +49,7 @@ export function FunctionalApp() {
 
   return (
     <>
-      {fishIndex !== 4 ? (
+      {fishIndex !== 3 ? (
         <>
           <FunctionalScoreBoard
             correctTally={correctTally}
