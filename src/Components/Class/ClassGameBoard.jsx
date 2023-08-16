@@ -7,7 +7,7 @@ export class ClassGameBoard extends Component {
   };
 
   nextFishToName =
-    this.props.fishes[this.props.fishIndex !== 4 ? this.props.fishIndex : 0];
+    this.props.fishes[this.props.total !== 4 ? this.props.total : 0];
 
   submitForm = (e) => {
     e.preventDefault();
