@@ -7,7 +7,7 @@ export const FunctionalFinalScore = ({ correctTally, totalTally }) => (
     <div id="score">
       <p>{correctTally}</p>
       <hr />
-      <p>{totalTally.length}</p>
+      <p>{totalTally}</p>
     </div>
   </div>
 );
