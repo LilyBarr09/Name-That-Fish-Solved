@@ -29,22 +29,30 @@ export class ClassApp extends Component {
     incorrectTally: 0,
   };
 
-  fishGuess = (fish) => {
-    const arrValuesToAdd =
-      fish ===
+  fishGuess = (guess) => {
+    // const arrValuesToAdd =
+    //   fish ===
+    //   initialFishes[this.state.correctTally + this.state.incorrectTally].name
+    //     ? [1, 0]
+    //     : [0, 1];
+    // this.setState({
+    //   correctTally: this.state.correctTally + arrValuesToAdd[0],
+    //   incorrectTally: this.state.incorrectTally + arrValuesToAdd[1],
+    // });
+    if (
+      guess ===
       initialFishes[this.state.correctTally + this.state.incorrectTally].name
-        ? [1, 0]
-        : [0, 1];
-    this.setState({
-      correctTally: this.state.correctTally + arrValuesToAdd[0],
-      incorrectTally: this.state.incorrectTally + arrValuesToAdd[1],
-    });
+    ) {
+      this.setState({ correctTally: this.state.correctTally + 1 });
+    } else {
+      this.setState({ incorrectTally: this.state.incorrectTally + 1 });
+    }
   };
 
   render() {
     const { correctTally, incorrectTally } = this.state;
 
-    const total = this.state.correctTally + this.state.incorrectTally;
+    const total = correctTally + incorrectTally;
 
     const answersLeft = initialFishes
       .slice(total, initialFishes.length)
@@ -52,7 +60,7 @@ export class ClassApp extends Component {
 
     return (
       <>
-        {total < 4 && (
+        {total < initialFishes.length && (
           <>
             <ClassScoreBoard
               correctTally={correctTally}
@@ -66,7 +74,7 @@ export class ClassApp extends Component {
             />
           </>
         )}
-        {total === 4 && (
+        {total === initialFishes.length && (
           <ClassFinalScore
             correctTally={correctTally}
             totalTally={initialFishes.length}

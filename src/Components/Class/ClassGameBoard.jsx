@@ -16,7 +16,9 @@ export class ClassGameBoard extends Component {
     const { usersInput } = this.state;
 
     const nextFishToName =
-      this.props.fishes[this.props.total !== 4 ? this.props.total : 0];
+      this.props.fishes[
+        this.props.total !== this.props.fishes.length ? this.props.total : 0
+      ];
     return (
       <div id="game-board">
         <div id="fish-container">
