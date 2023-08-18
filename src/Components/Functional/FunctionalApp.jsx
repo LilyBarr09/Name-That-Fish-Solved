@@ -29,11 +29,16 @@ export function FunctionalApp() {
 
   const fishIndex = correctTally + incorrectTally;
 
-  const fishGuess = (fish) => {
-    const arrValuesToAdd =
-      fish === initialFishes[fishIndex].name ? [1, 0] : [0, 1];
-    setCorrectTally(correctTally + arrValuesToAdd[0]);
-    setIncorrectTally(incorrectTally + arrValuesToAdd[1]);
+  const fishGuess = (guess) => {
+    // const arrValuesToAdd =
+    //   fish === initialFishes[fishIndex].name ? [1, 0] : [0, 1];
+    // setCorrectTally(correctTally + arrValuesToAdd[0]);
+    // setIncorrectTally(incorrectTally + arrValuesToAdd[1]);
+    if (guess === initialFishes[fishIndex].name) {
+      setCorrectTally(correctTally + 1);
+    } else {
+      setIncorrectTally(incorrectTally + 1);
+    }
   };
 
   const answersLeft = initialFishes
@@ -42,7 +47,7 @@ export function FunctionalApp() {
 
   return (
     <>
-      {fishIndex < 4 && (
+      {fishIndex < initialFishes.length && (
         <>
           <FunctionalScoreBoard
             correctTally={correctTally}
@@ -56,7 +61,7 @@ export function FunctionalApp() {
           />
         </>
       )}
-      {fishIndex === 4 && (
+      {fishIndex === initialFishes.length && (
         <FunctionalFinalScore
           correctTally={correctTally}
           totalTally={initialFishes.length}

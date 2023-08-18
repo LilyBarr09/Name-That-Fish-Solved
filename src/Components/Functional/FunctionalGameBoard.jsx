@@ -4,7 +4,7 @@ import { useState } from "react";
 export function FunctionalGameBoard({ fishes, fishGuess, fishIndex }) {
   const [usersInput, setUsersInput] = useState("");
 
-  const nextFishToName = fishes[fishIndex !== 4 ? fishIndex : 0];
+  const nextFishToName = fishes[fishIndex !== fishes.length ? fishIndex : 0];
 
   const submitForm = (e) => {
     e.preventDefault();
